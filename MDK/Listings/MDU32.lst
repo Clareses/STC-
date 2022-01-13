@@ -1,0 +1,516 @@
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     1
+
+
+MACRO ASSEMBLER A251 V4.69.13.0
+OBJECT MODULE PLACED IN .\Objects\MDU32.obj
+ASSEMBLER INVOKED BY: F:\ProgramData\keil5\C251\BIN\A251.EXE ..\CODES\Libraries\libraries\MDU32.ASM MODSRC INTR2 SET(LAR
+                      GE) DEBUG PRINT(.\Listings\MDU32.lst) OBJECT(.\Objects\MDU32.obj) EP
+
+LOC    OBJ             LINE     SOURCE
+
+                          1     NAME MDU32
+                          2     ;$include (STC16Fxx.H)
+ 0080               +1    3     sfr     P0              =   0x80;
+0080.0              +1    4     sbit    P00             =   P0^0;
+0080.1              +1    5     sbit    P01             =   P0^1;
+0080.2              +1    6     sbit    P02             =   P0^2;
+0080.3              +1    7     sbit    P03             =   P0^3;
+0080.4              +1    8     sbit    P04             =   P0^4;
+0080.5              +1    9     sbit    P05             =   P0^5;
+0080.6              +1   10     sbit    P06             =   P0^6;
+0080.7              +1   11     sbit    P07             =   P0^7;
+ 0081               +1   12     sfr     SP              =   0x81;
+ 0082               +1   13     sfr     DPL             =   0x82;
+ 0083               +1   14     sfr     DPH             =   0x83;
+ 0084               +1   15     sfr     DPXL            =   0x84;
+ 0085               +1   16     sfr     USBCLK          =   0x85;
+ 0086               +1   17     sfr     DPS             =   0x86;
+ 0087               +1   18     sfr     PCON            =   0x87;
+ 0088               +1   19     sfr     TCON            =   0x88;
+0088.0              +1   20     sbit    IT0             =   TCON^0;
+0088.1              +1   21     sbit    IE0             =   TCON^1;
+0088.2              +1   22     sbit    IT1             =   TCON^2;
+0088.3              +1   23     sbit    IE1             =   TCON^3;
+0088.4              +1   24     sbit    TR0             =   TCON^4;
+0088.5              +1   25     sbit    TF0             =   TCON^5;
+0088.6              +1   26     sbit    TR1             =   TCON^6;
+0088.7              +1   27     sbit    TF1             =   TCON^7;
+ 0089               +1   28     sfr     TMOD            =   0x89;
+ 008A               +1   29     sfr     TL0             =   0x8a;
+ 008B               +1   30     sfr     TL1             =   0x8b;
+ 008C               +1   31     sfr     TH0             =   0x8c;
+ 008D               +1   32     sfr     TH1             =   0x8d;
+ 008E               +1   33     sfr     CKCON           =   0x8e;
+ 008F               +1   34     sfr     DMAIR           =   0x8f;
+ 0090               +1   35     sfr     P1              =   0x90;
+0090.0              +1   36     sbit    P10             =   P1^0;
+0090.1              +1   37     sbit    P11             =   P1^1;
+0090.2              +1   38     sbit    P12             =   P1^2;
+0090.3              +1   39     sbit    P13             =   P1^3;
+0090.4              +1   40     sbit    P14             =   P1^4;
+0090.5              +1   41     sbit    P15             =   P1^5;
+0090.6              +1   42     sbit    P16             =   P1^6;
+0090.7              +1   43     sbit    P17             =   P1^7;
+ 0091               +1   44     sfr     USBCON          =   0x91;
+ 0092               +1   45     sfr     WTST            =   0x92;
+ 0093               +1   46     sfr     AUXR            =   0x93;
+ 0094               +1   47     sfr     AUXR2           =   0x94;
+ 0095               +1   48     sfr     INTCLKO         =   0x95;
+ 0096               +1   49     sfr     USBADR          =   0x96;
+ 0097               +1   50     sfr     USBDAT          =   0x97;
+ 0098               +1   51     sfr     SCON            =   0x98;
+0098.0              +1   52     sbit    RI              =   SCON^0;
+0098.1              +1   53     sbit    TI              =   SCON^1;
+0098.2              +1   54     sbit    RB8             =   SCON^2;
+0098.3              +1   55     sbit    TB8             =   SCON^3;
+0098.4              +1   56     sbit    REN             =   SCON^4;
+0098.5              +1   57     sbit    SM2             =   SCON^5;
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     2
+
+0098.6              +1   58     sbit    SM1             =   SCON^6;
+0098.7              +1   59     sbit    SM0             =   SCON^7;
+ 0099               +1   60     sfr     SBUF            =   0x99;
+ 009A               +1   61     sfr     P_SW1           =   0x9a;
+ 009B               +1   62     sfr     P_SW2           =   0x9b;
+ 009C               +1   63     sfr     BGTRIM          =   0x9c;
+ 009D               +1   64     sfr     VRTRIM          =   0x9d;
+ 009E               +1   65     sfr     LIRTRIM         =   0x9e;
+ 009F               +1   66     sfr     IRTRIM          =   0x9f;
+ 00A0               +1   67     sfr     P2              =   0xa0;
+00A0.0              +1   68     sbit    P20             =   P2^0;
+00A0.1              +1   69     sbit    P21             =   P2^1;
+00A0.2              +1   70     sbit    P22             =   P2^2;
+00A0.3              +1   71     sbit    P23             =   P2^3;
+00A0.4              +1   72     sbit    P24             =   P2^4;
+00A0.5              +1   73     sbit    P25             =   P2^5;
+00A0.6              +1   74     sbit    P26             =   P2^6;
+00A0.7              +1   75     sbit    P27             =   P2^7;
+ 00A1               +1   76     sfr     CANICR          =   0xa1;
+ 00A2               +1   77     sfr     CANAR           =   0xa2;
+ 00A3               +1   78     sfr     CANDR           =   0xa3;
+ 00A8               +1   79     sfr     IE              =   0xa8;
+00A8.0              +1   80     sbit    EX0             =   IE^0;
+00A8.1              +1   81     sbit    ET0             =   IE^1;
+00A8.2              +1   82     sbit    EX1             =   IE^2;
+00A8.3              +1   83     sbit    ET1             =   IE^3;
+00A8.4              +1   84     sbit    ES              =   IE^4;
+00A8.5              +1   85     sbit    EADC            =   IE^5;
+00A8.6              +1   86     sbit    ELVD            =   IE^6;
+00A8.7              +1   87     sbit    EA              =   IE^7;
+ 00A9               +1   88     sfr     IRCBAND         =   0xa9;
+ 00AA               +1   89     sfr     WKTCL           =   0xaa;
+ 00AB               +1   90     sfr     WKTCH           =   0xab;
+ 00AC               +1   91     sfr     VOCTRL          =   0xac;
+ 00AD               +1   92     sfr     VOSEL           =   0xad;
+ 00B0               +1   93     sfr     P3              =   0xb0;
+00B0.0              +1   94     sbit    P30             =   P3^0;
+00B0.1              +1   95     sbit    P31             =   P3^1;
+00B0.2              +1   96     sbit    P32             =   P3^2;
+00B0.3              +1   97     sbit    P33             =   P3^3;
+00B0.4              +1   98     sbit    P34             =   P3^4;
+00B0.5              +1   99     sbit    P35             =   P3^5;
+00B0.6              +1  100     sbit    P36             =   P3^6;
+00B0.7              +1  101     sbit    P37             =   P3^7;
+ 00B1               +1  102     sfr     LINICR          =   0xb1;
+ 00B2               +1  103     sfr     LINAR           =   0xb2;
+ 00B3               +1  104     sfr     LINDR           =   0xb3;
+ 00B4               +1  105     sfr     CMPCR1          =   0xb4;
+ 00B5               +1  106     sfr     CMPCR2          =   0xb5;
+ 00B6               +1  107     sfr     IP2H            =   0xb6;
+ 00B7               +1  108     sfr     IPH             =   0xb7;
+ 00B8               +1  109     sfr     IP              =   0xb8;
+00B8.0              +1  110     sbit    PX0             =   IP^0;
+00B8.1              +1  111     sbit    PT0             =   IP^1;
+00B8.2              +1  112     sbit    PX1             =   IP^2;
+00B8.3              +1  113     sbit    PT1             =   IP^3;
+00B8.4              +1  114     sbit    PS0             =   IP^4;
+00B8.4              +1  115     sbit    PS              =   IP^4;
+00B8.5              +1  116     sbit    PADC            =   IP^5;
+00B8.6              +1  117     sbit    PLVD            =   IP^6;
+00B8.7              +1  118     sbit    PPWM1           =   IP^7;
+ 00B9               +1  119     sfr     SPSTAT          =   0xb9;
+ 00BA               +1  120     sfr     SPCTL           =   0xba;
+ 00BB               +1  121     sfr     SPDAT           =   0xbb;
+ 00BC               +1  122     sfr     S4CON           =   0xbc;
+ 00BD               +1  123     sfr     S4BUF           =   0xbd;
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     3
+
+ 00BE               +1  124     sfr     SPH             =   0xbe;
+ 00BF               +1  125     sfr     BUSSPD          =   0xbf;
+ 00C0               +1  126     sfr     P4              =   0xc0;
+00C0.0              +1  127     sbit    P40             =   P4^0;
+00C0.1              +1  128     sbit    P41             =   P4^1;
+00C0.2              +1  129     sbit    P42             =   P4^2;
+00C0.3              +1  130     sbit    P43             =   P4^3;
+00C0.4              +1  131     sbit    P44             =   P4^4;
+00C0.5              +1  132     sbit    P45             =   P4^5;
+00C0.6              +1  133     sbit    P46             =   P4^6;
+00C0.7              +1  134     sbit    P47             =   P4^7;
+ 00C1               +1  135     sfr     DID             =   0xc1;
+ 00C2               +1  136     sfr     IAP_DATA        =   0xc2;
+ 00C3               +1  137     sfr     IAP_ADDRH       =   0xc3;
+ 00C4               +1  138     sfr     IAP_ADDRL       =   0xc4;
+ 00C5               +1  139     sfr     IAP_CMD         =   0xc5;
+ 00C6               +1  140     sfr     IAP_TRIG        =   0xc6;
+ 00C7               +1  141     sfr     IAP_CONTR       =   0xc7;
+ 00C8               +1  142     sfr     P5              =   0xc8;
+00C8.0              +1  143     sbit    P50             =   P5^0;
+00C8.1              +1  144     sbit    P51             =   P5^1;
+00C8.2              +1  145     sbit    P52             =   P5^2;
+00C8.3              +1  146     sbit    P53             =   P5^3;
+00C8.4              +1  147     sbit    P54             =   P5^4;
+00C8.5              +1  148     sbit    P55             =   P5^5;
+00C8.6              +1  149     sbit    P56             =   P5^6;
+00C8.7              +1  150     sbit    P57             =   P5^7;
+ 00C9               +1  151     sfr     T4H             =   0xc9;
+ 00CA               +1  152     sfr     T4L             =   0xca;
+ 00CB               +1  153     sfr     T3H             =   0xcb;
+ 00CC               +1  154     sfr     T3L             =   0xcc;
+ 00CD               +1  155     sfr     T2H             =   0xcd;
+ 00CE               +1  156     sfr     T2L             =   0xce;
+ 00D0               +1  157     sfr     PSW             =   0xd0;
+00D0.0              +1  158     sbit    P               =   PSW^0;
+00D0.1              +1  159     sbit    F1              =   PSW^1;
+00D0.2              +1  160     sbit    OV              =   PSW^2;
+00D0.3              +1  161     sbit    RS0             =   PSW^3;
+00D0.4              +1  162     sbit    RS1             =   PSW^4;
+00D0.5              +1  163     sbit    F0              =   PSW^5;
+00D0.6              +1  164     sbit    AC              =   PSW^6;
+00D0.7              +1  165     sbit    CY              =   PSW^7;
+ 00D1               +1  166     sfr     PSW1            =   0xd1;
+ 00D2               +1  167     sfr     P7M1            =   0xd2;
+ 00D3               +1  168     sfr     P7M0            =   0xd3;
+ 00D8               +1  169     sfr     RSTIF           =   0xd8;
+ 00DA               +1  170     sfr     AUXINTIF        =   0xda;
+ 00DB               +1  171     sfr     T4T3M           =   0xdb;
+ 00DC               +1  172     sfr     ADC_CONTR       =   0xdc;
+ 00DD               +1  173     sfr     ADC_RES         =   0xdd;
+ 00DE               +1  174     sfr     ADC_RESL        =   0xde;
+ 00DF               +1  175     sfr     ADCCFG          =   0xdf;
+ 00E0               +1  176     sfr     ACC             =   0xe0;
+ 00E1               +1  177     sfr     SADDR           =   0xe1;
+ 00E2               +1  178     sfr     SADEN           =   0xe2;
+ 00E3               +1  179     sfr     S2CON           =   0xe3;
+ 00E4               +1  180     sfr     S2BUF           =   0xe4;
+ 00E5               +1  181     sfr     S3CON           =   0xe5;
+ 00E6               +1  182     sfr     S3BUF           =   0xe6;
+ 00E7               +1  183     sfr     IE2             =   0xe7;
+ 00E8               +1  184     sfr     P6              =   0xe8;
+00E8.0              +1  185     sbit    P60             =   P6^0;
+00E8.1              +1  186     sbit    P61             =   P6^1;
+00E8.2              +1  187     sbit    P62             =   P6^2;
+00E8.3              +1  188     sbit    P63             =   P6^3;
+00E8.4              +1  189     sbit    P64             =   P6^4;
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     4
+
+00E8.5              +1  190     sbit    P65             =   P6^5;
+00E8.6              +1  191     sbit    P66             =   P6^6;
+00E8.7              +1  192     sbit    P67             =   P6^7;
+ 00EA               +1  193     sfr     MXAX            =   0xea;
+ 00EB               +1  194     sfr     TA              =   0xeb;
+ 00EC               +1  195     sfr     P5M1            =   0xec;
+ 00ED               +1  196     sfr     P5M0            =   0xed;
+ 00EE               +1  197     sfr     P6M1            =   0xee;
+ 00EF               +1  198     sfr     P6M0            =   0xef;
+ 00F0               +1  199     sfr     B               =   0xf0;
+ 00F1               +1  200     sfr     P0M1            =   0xf1;
+ 00F2               +1  201     sfr     P0M0            =   0xf2;
+ 00F3               +1  202     sfr     P1M1            =   0xf3;
+ 00F4               +1  203     sfr     P1M0            =   0xf4;
+ 00F5               +1  204     sfr     P2M1            =   0xf5;
+ 00F6               +1  205     sfr     P2M0            =   0xf6;
+ 00F7               +1  206     sfr     IAP_TPS         =   0xf7;
+ 00F8               +1  207     sfr     P7              =   0xf8;
+00F8.0              +1  208     sbit    P70             =   P7^0;
+00F8.1              +1  209     sbit    P71             =   P7^1;
+00F8.2              +1  210     sbit    P72             =   P7^2;
+00F8.3              +1  211     sbit    P73             =   P7^3;
+00F8.4              +1  212     sbit    P74             =   P7^4;
+00F8.5              +1  213     sbit    P75             =   P7^5;
+00F8.6              +1  214     sbit    P76             =   P7^6;
+00F8.7              +1  215     sbit    P77             =   P7^7;
+ 00F9               +1  216     sfr     P3M1            =   0xf9;
+ 00FA               +1  217     sfr     P3M0            =   0xfa;
+ 00FB               +1  218     sfr     P4M1            =   0xfb;
+ 00FC               +1  219     sfr     P4M0            =   0xfc;
+ 00FD               +1  220     sfr     WDT_CONTR       =   0xfd;
+ 00FE               +1  221     sfr     IP2             =   0xfe;
+ 00FF               +1  222     sfr     RSTCFG          =   0xff;
+                    +1  223             
+                        224     ;-----------------------------------------------------------------------------
+                        225     ; 'LMUL' Long Integer Multiplication function replacement
+                        226     ;-----------------------------------------------------------------------------
+------                  227     ?PR?LMUL?MDU  SEGMENT CODE
+                        228       PUBLIC  ?C?LMUL    
+------                  229       RSEG    ?PR?LMUL?MDU
+000000                  230     ?C?LMUL:
+000000 758F02           231       MOV     DMAIR,#0x02   
+000003 22               232       RET
+                        233     ;-----------------------------------------------------------------------------
+                        234     ; 'ULDIV' Unsigned Long Integer Division function replacement
+                        235     ;-----------------------------------------------------------------------------
+------                  236     ?PR?ULDIV?MDU  SEGMENT CODE
+                        237       PUBLIC  ?C?ULDIV    
+------                  238       RSEG    ?PR?ULDIV?MDU
+000000                  239     ?C?ULDIV:
+000000                  240     ULDIV:
+000000 758F04           241       MOV     DMAIR,#0x04   
+000003 22               242       RET
+                        243     ;-----------------------------------------------------------------------------
+                        244     ; 'SLDIV' Signed Long Integer division function replacement
+                        245     ;-----------------------------------------------------------------------------
+------                  246     ?PR?SLDIV?MDU  SEGMENT CODE
+                        247       PUBLIC  ?C?SLDIV    
+------                  248       RSEG    ?PR?SLDIV?MDU
+000000                  249     ?C?SLDIV:
+000000 758F06           250       MOV     DMAIR,#0x06   
+000003 22               251       RET
+                        252     END
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E        T Y P E  V A L U E     ATTRIBUTES
+
+?C?LMUL. . . . . .  C  ADDR  0000H     R   SEG=?PR?LMUL?MDU
+?C?SLDIV . . . . .  C  ADDR  0000H     R   SEG=?PR?SLDIV?MDU
+?C?ULDIV . . . . .  C  ADDR  0000H     R   SEG=?PR?ULDIV?MDU
+?PR?LMUL?MDU . . .  C  SEG   000004H       REL=UNIT, ALN=BYTE
+?PR?SLDIV?MDU. . .  C  SEG   000004H       REL=UNIT, ALN=BYTE
+?PR?ULDIV?MDU. . .  C  SEG   000004H       REL=UNIT, ALN=BYTE
+AC . . . . . . . .  B  ADDR  00D0H.6   A   
+ACC. . . . . . . .  N  NUMB  00E0H     A   
+ADCCFG . . . . . .  N  NUMB  00DFH     A   
+ADC_CONTR. . . . .  N  NUMB  00DCH     A   
+ADC_RES. . . . . .  N  NUMB  00DDH     A   
+ADC_RESL . . . . .  N  NUMB  00DEH     A   
+AUXINTIF . . . . .  N  NUMB  00DAH     A   
+AUXR . . . . . . .  N  NUMB  0093H     A   
+AUXR2. . . . . . .  N  NUMB  0094H     A   
+B. . . . . . . . .  N  NUMB  00F0H     A   
+BGTRIM . . . . . .  N  NUMB  009CH     A   
+BUSSPD . . . . . .  N  NUMB  00BFH     A   
+CANAR. . . . . . .  N  NUMB  00A2H     A   
+CANDR. . . . . . .  N  NUMB  00A3H     A   
+CANICR . . . . . .  N  NUMB  00A1H     A   
+CKCON. . . . . . .  N  NUMB  008EH     A   
+CMPCR1 . . . . . .  N  NUMB  00B4H     A   
+CMPCR2 . . . . . .  N  NUMB  00B5H     A   
+CY . . . . . . . .  B  ADDR  00D0H.7   A   
+DID. . . . . . . .  N  NUMB  00C1H     A   
+DMAIR. . . . . . .  N  NUMB  008FH     A   
+DPH. . . . . . . .  N  NUMB  0083H     A   
+DPL. . . . . . . .  N  NUMB  0082H     A   
+DPS. . . . . . . .  N  NUMB  0086H     A   
+DPXL . . . . . . .  N  NUMB  0084H     A   
+EA . . . . . . . .  B  ADDR  00A8H.7   A   
+EADC . . . . . . .  B  ADDR  00A8H.5   A   
+ELVD . . . . . . .  B  ADDR  00A8H.6   A   
+ES . . . . . . . .  B  ADDR  00A8H.4   A   
+ET0. . . . . . . .  B  ADDR  00A8H.1   A   
+ET1. . . . . . . .  B  ADDR  00A8H.3   A   
+EX0. . . . . . . .  B  ADDR  00A8H.0   A   
+EX1. . . . . . . .  B  ADDR  00A8H.2   A   
+F0 . . . . . . . .  B  ADDR  00D0H.5   A   
+F1 . . . . . . . .  B  ADDR  00D0H.1   A   
+IAP_ADDRH. . . . .  N  NUMB  00C3H     A   
+IAP_ADDRL. . . . .  N  NUMB  00C4H     A   
+IAP_CMD. . . . . .  N  NUMB  00C5H     A   
+IAP_CONTR. . . . .  N  NUMB  00C7H     A   
+IAP_DATA . . . . .  N  NUMB  00C2H     A   
+IAP_TPS. . . . . .  N  NUMB  00F7H     A   
+IAP_TRIG . . . . .  N  NUMB  00C6H     A   
+IE . . . . . . . .  N  NUMB  00A8H     A   
+IE0. . . . . . . .  B  ADDR  0088H.1   A   
+IE1. . . . . . . .  B  ADDR  0088H.3   A   
+IE2. . . . . . . .  N  NUMB  00E7H     A   
+INTCLKO. . . . . .  N  NUMB  0095H     A   
+IP . . . . . . . .  N  NUMB  00B8H     A   
+IP2. . . . . . . .  N  NUMB  00FEH     A   
+IP2H . . . . . . .  N  NUMB  00B6H     A   
+IPH. . . . . . . .  N  NUMB  00B7H     A   
+IRCBAND. . . . . .  N  NUMB  00A9H     A   
+IRTRIM . . . . . .  N  NUMB  009FH     A   
+IT0. . . . . . . .  B  ADDR  0088H.0   A   
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     6
+
+IT1. . . . . . . .  B  ADDR  0088H.2   A   
+LINAR. . . . . . .  N  NUMB  00B2H     A   
+LINDR. . . . . . .  N  NUMB  00B3H     A   
+LINICR . . . . . .  N  NUMB  00B1H     A   
+LIRTRIM. . . . . .  N  NUMB  009EH     A   
+MDU32. . . . . . .  -- ----  -------       
+MXAX . . . . . . .  N  NUMB  00EAH     A   
+OV . . . . . . . .  B  ADDR  00D0H.2   A   
+P. . . . . . . . .  B  ADDR  00D0H.0   A   
+P0 . . . . . . . .  N  NUMB  0080H     A   
+P00. . . . . . . .  B  ADDR  0080H.0   A   
+P01. . . . . . . .  B  ADDR  0080H.1   A   
+P02. . . . . . . .  B  ADDR  0080H.2   A   
+P03. . . . . . . .  B  ADDR  0080H.3   A   
+P04. . . . . . . .  B  ADDR  0080H.4   A   
+P05. . . . . . . .  B  ADDR  0080H.5   A   
+P06. . . . . . . .  B  ADDR  0080H.6   A   
+P07. . . . . . . .  B  ADDR  0080H.7   A   
+P0M0 . . . . . . .  N  NUMB  00F2H     A   
+P0M1 . . . . . . .  N  NUMB  00F1H     A   
+P1 . . . . . . . .  N  NUMB  0090H     A   
+P10. . . . . . . .  B  ADDR  0090H.0   A   
+P11. . . . . . . .  B  ADDR  0090H.1   A   
+P12. . . . . . . .  B  ADDR  0090H.2   A   
+P13. . . . . . . .  B  ADDR  0090H.3   A   
+P14. . . . . . . .  B  ADDR  0090H.4   A   
+P15. . . . . . . .  B  ADDR  0090H.5   A   
+P16. . . . . . . .  B  ADDR  0090H.6   A   
+P17. . . . . . . .  B  ADDR  0090H.7   A   
+P1M0 . . . . . . .  N  NUMB  00F4H     A   
+P1M1 . . . . . . .  N  NUMB  00F3H     A   
+P2 . . . . . . . .  N  NUMB  00A0H     A   
+P20. . . . . . . .  B  ADDR  00A0H.0   A   
+P21. . . . . . . .  B  ADDR  00A0H.1   A   
+P22. . . . . . . .  B  ADDR  00A0H.2   A   
+P23. . . . . . . .  B  ADDR  00A0H.3   A   
+P24. . . . . . . .  B  ADDR  00A0H.4   A   
+P25. . . . . . . .  B  ADDR  00A0H.5   A   
+P26. . . . . . . .  B  ADDR  00A0H.6   A   
+P27. . . . . . . .  B  ADDR  00A0H.7   A   
+P2M0 . . . . . . .  N  NUMB  00F6H     A   
+P2M1 . . . . . . .  N  NUMB  00F5H     A   
+P3 . . . . . . . .  N  NUMB  00B0H     A   
+P30. . . . . . . .  B  ADDR  00B0H.0   A   
+P31. . . . . . . .  B  ADDR  00B0H.1   A   
+P32. . . . . . . .  B  ADDR  00B0H.2   A   
+P33. . . . . . . .  B  ADDR  00B0H.3   A   
+P34. . . . . . . .  B  ADDR  00B0H.4   A   
+P35. . . . . . . .  B  ADDR  00B0H.5   A   
+P36. . . . . . . .  B  ADDR  00B0H.6   A   
+P37. . . . . . . .  B  ADDR  00B0H.7   A   
+P3M0 . . . . . . .  N  NUMB  00FAH     A   
+P3M1 . . . . . . .  N  NUMB  00F9H     A   
+P4 . . . . . . . .  N  NUMB  00C0H     A   
+P40. . . . . . . .  B  ADDR  00C0H.0   A   
+P41. . . . . . . .  B  ADDR  00C0H.1   A   
+P42. . . . . . . .  B  ADDR  00C0H.2   A   
+P43. . . . . . . .  B  ADDR  00C0H.3   A   
+P44. . . . . . . .  B  ADDR  00C0H.4   A   
+P45. . . . . . . .  B  ADDR  00C0H.5   A   
+P46. . . . . . . .  B  ADDR  00C0H.6   A   
+P47. . . . . . . .  B  ADDR  00C0H.7   A   
+P4M0 . . . . . . .  N  NUMB  00FCH     A   
+P4M1 . . . . . . .  N  NUMB  00FBH     A   
+P5 . . . . . . . .  N  NUMB  00C8H     A   
+P50. . . . . . . .  B  ADDR  00C8H.0   A   
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     7
+
+P51. . . . . . . .  B  ADDR  00C8H.1   A   
+P52. . . . . . . .  B  ADDR  00C8H.2   A   
+P53. . . . . . . .  B  ADDR  00C8H.3   A   
+P54. . . . . . . .  B  ADDR  00C8H.4   A   
+P55. . . . . . . .  B  ADDR  00C8H.5   A   
+P56. . . . . . . .  B  ADDR  00C8H.6   A   
+P57. . . . . . . .  B  ADDR  00C8H.7   A   
+P5M0 . . . . . . .  N  NUMB  00EDH     A   
+P5M1 . . . . . . .  N  NUMB  00ECH     A   
+P6 . . . . . . . .  N  NUMB  00E8H     A   
+P60. . . . . . . .  B  ADDR  00E8H.0   A   
+P61. . . . . . . .  B  ADDR  00E8H.1   A   
+P62. . . . . . . .  B  ADDR  00E8H.2   A   
+P63. . . . . . . .  B  ADDR  00E8H.3   A   
+P64. . . . . . . .  B  ADDR  00E8H.4   A   
+P65. . . . . . . .  B  ADDR  00E8H.5   A   
+P66. . . . . . . .  B  ADDR  00E8H.6   A   
+P67. . . . . . . .  B  ADDR  00E8H.7   A   
+P6M0 . . . . . . .  N  NUMB  00EFH     A   
+P6M1 . . . . . . .  N  NUMB  00EEH     A   
+P7 . . . . . . . .  N  NUMB  00F8H     A   
+P70. . . . . . . .  B  ADDR  00F8H.0   A   
+P71. . . . . . . .  B  ADDR  00F8H.1   A   
+P72. . . . . . . .  B  ADDR  00F8H.2   A   
+P73. . . . . . . .  B  ADDR  00F8H.3   A   
+P74. . . . . . . .  B  ADDR  00F8H.4   A   
+P75. . . . . . . .  B  ADDR  00F8H.5   A   
+P76. . . . . . . .  B  ADDR  00F8H.6   A   
+P77. . . . . . . .  B  ADDR  00F8H.7   A   
+P7M0 . . . . . . .  N  NUMB  00D3H     A   
+P7M1 . . . . . . .  N  NUMB  00D2H     A   
+PADC . . . . . . .  B  ADDR  00B8H.5   A   
+PCON . . . . . . .  N  NUMB  0087H     A   
+PLVD . . . . . . .  B  ADDR  00B8H.6   A   
+PPWM1. . . . . . .  B  ADDR  00B8H.7   A   
+PS . . . . . . . .  B  ADDR  00B8H.4   A   
+PS0. . . . . . . .  B  ADDR  00B8H.4   A   
+PSW. . . . . . . .  N  NUMB  00D0H     A   
+PSW1 . . . . . . .  N  NUMB  00D1H     A   
+PT0. . . . . . . .  B  ADDR  00B8H.1   A   
+PT1. . . . . . . .  B  ADDR  00B8H.3   A   
+PX0. . . . . . . .  B  ADDR  00B8H.0   A   
+PX1. . . . . . . .  B  ADDR  00B8H.2   A   
+P_SW1. . . . . . .  N  NUMB  009AH     A   
+P_SW2. . . . . . .  N  NUMB  009BH     A   
+RB8. . . . . . . .  B  ADDR  0098H.2   A   
+REN. . . . . . . .  B  ADDR  0098H.4   A   
+RI . . . . . . . .  B  ADDR  0098H.0   A   
+RS0. . . . . . . .  B  ADDR  00D0H.3   A   
+RS1. . . . . . . .  B  ADDR  00D0H.4   A   
+RSTCFG . . . . . .  N  NUMB  00FFH     A   
+RSTIF. . . . . . .  N  NUMB  00D8H     A   
+S2BUF. . . . . . .  N  NUMB  00E4H     A   
+S2CON. . . . . . .  N  NUMB  00E3H     A   
+S3BUF. . . . . . .  N  NUMB  00E6H     A   
+S3CON. . . . . . .  N  NUMB  00E5H     A   
+S4BUF. . . . . . .  N  NUMB  00BDH     A   
+S4CON. . . . . . .  N  NUMB  00BCH     A   
+SADDR. . . . . . .  N  NUMB  00E1H     A   
+SADEN. . . . . . .  N  NUMB  00E2H     A   
+SBUF . . . . . . .  N  NUMB  0099H     A   
+SCON . . . . . . .  N  NUMB  0098H     A   
+SM0. . . . . . . .  B  ADDR  0098H.7   A   
+SM1. . . . . . . .  B  ADDR  0098H.6   A   
+SM2. . . . . . . .  B  ADDR  0098H.5   A   
+SP . . . . . . . .  N  NUMB  0081H     A   
+A251 MACRO ASSEMBLER  MDU32                                                                 12/01/22 15:18:20 PAGE     8
+
+SPCTL. . . . . . .  N  NUMB  00BAH     A   
+SPDAT. . . . . . .  N  NUMB  00BBH     A   
+SPH. . . . . . . .  N  NUMB  00BEH     A   
+SPSTAT . . . . . .  N  NUMB  00B9H     A   
+T2H. . . . . . . .  N  NUMB  00CDH     A   
+T2L. . . . . . . .  N  NUMB  00CEH     A   
+T3H. . . . . . . .  N  NUMB  00CBH     A   
+T3L. . . . . . . .  N  NUMB  00CCH     A   
+T4H. . . . . . . .  N  NUMB  00C9H     A   
+T4L. . . . . . . .  N  NUMB  00CAH     A   
+T4T3M. . . . . . .  N  NUMB  00DBH     A   
+TA . . . . . . . .  N  NUMB  00EBH     A   
+TB8. . . . . . . .  B  ADDR  0098H.3   A   
+TCON . . . . . . .  N  NUMB  0088H     A   
+TF0. . . . . . . .  B  ADDR  0088H.5   A   
+TF1. . . . . . . .  B  ADDR  0088H.7   A   
+TH0. . . . . . . .  N  NUMB  008CH     A   
+TH1. . . . . . . .  N  NUMB  008DH     A   
+TI . . . . . . . .  B  ADDR  0098H.1   A   
+TL0. . . . . . . .  N  NUMB  008AH     A   
+TL1. . . . . . . .  N  NUMB  008BH     A   
+TMOD . . . . . . .  N  NUMB  0089H     A   
+TR0. . . . . . . .  B  ADDR  0088H.4   A   
+TR1. . . . . . . .  B  ADDR  0088H.6   A   
+ULDIV. . . . . . .  C  ADDR  0000H     R   SEG=?PR?ULDIV?MDU
+USBADR . . . . . .  N  NUMB  0096H     A   
+USBCLK . . . . . .  N  NUMB  0085H     A   
+USBCON . . . . . .  N  NUMB  0091H     A   
+USBDAT . . . . . .  N  NUMB  0097H     A   
+VOCTRL . . . . . .  N  NUMB  00ACH     A   
+VOSEL. . . . . . .  N  NUMB  00ADH     A   
+VRTRIM . . . . . .  N  NUMB  009DH     A   
+WDT_CONTR. . . . .  N  NUMB  00FDH     A   
+WKTCH. . . . . . .  N  NUMB  00ABH     A   
+WKTCL. . . . . . .  N  NUMB  00AAH     A   
+WTST . . . . . . .  N  NUMB  0092H     A   
+
+
+REGISTER BANK(S) USED: 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S).

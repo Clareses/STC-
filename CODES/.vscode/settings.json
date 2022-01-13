@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "zf_adc.h": "c",
+        "step_motor.h": "c",
+        "headfile.h": "c",
+        "mycontrolsys.h": "c",
+        "mystepmotorcontrol.h": "c",
+        "mystepmotorpidadapter.h": "c"
+    }
+}
